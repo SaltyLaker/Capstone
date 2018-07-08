@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>
+		Main App
+	</title>
+	<!--<link rel="stylesheet" type="text/css" href="CSS/main.css" />-->
+	<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/main.css') }}">
+
+	<!--Bokeh-->
+	<script src="http://cdn.pydata.org/bokeh/release/bokeh-0.11.0.min.js"></script>
+    <link rel="stylesheet" href="http://cdn.pydata.org/bokeh/release/bokeh-0.11.0.min.css">
+    <!--{{ script | safe }}-->
+
+</head>
+<body>
+	<div class="topnav">
+		<a href="#home">Home</a>
+		<a href="#home">Story</a>
+	</div>
+	<div class = "main">
+		<div class = "left">
+			<form id='input' method='post' action='graph'>	
+				<select class = "manual">
+				  <option value="USA">USA</option>
+				  <option value="India">India</option>
+				  <option value="UK">UK</option>
+				  <option value="Brazil">Brazil</option>
+				</select><br>
+				<select class = "manual">
+					<option value="Linear Regression">Linear Regression</option>
+				 	<option value="Decition Tree">Decition Tree</option>
+				</select><br>
+				Key Words: <input class = "manual" type='text' name='ticker' placeholder='Headache'/><br>
+				<input class = "manual" type="submit" value="Submit">
+			</form>
+		</div>
+		<div class = "right">
+			<!--{{ div | safe }}-->
+			<div class="container" align="left">
+				<embed type="image/svg+xml" src={{graph_data|safe}} style='max-width:1000px'/>
+	  		</div>
+		</div>
+	</div>
+</body>
+</html>
