@@ -1,0 +1,31 @@
+{% extends "template.html" %}
+{% block content %}
+		<div class = "graph">
+			<div class = "left">
+				<form id='input' method='post' action="{{url_for('customGraphPost')}}">	
+					<p class = "text" >Key Words: </p>
+					<input class = "manual" type='text' name='keyWord' placeholder='Headache'/><br>
+					<select class = "manual" name="region" >
+					  <option value="US">USA</option>
+					  <option value="IN">India</option>
+					  <option value="GB">UK</option>
+					  <option value="BR">Brazil</option>
+					</select><br>
+					<select class = "manual" name = "MLType">
+						<option value="linearRegression" >Linear Regression</option>
+					 	<option value="KNeighborsRegressor">KNN</option>
+					</select><br>
+					<input class = "manual" type="submit" value="Submit">
+				</form>
+			</div>
+			<div class = "right">
+				<!--{{ div | safe }}-->
+				<div class="container" align="left">
+					<!--
+					<embed type="image/svg+xml" src={{graph_data|safe}} style='max-width:1000px'/>
+					-->
+					{{graph_data|safe}}
+		  		</div>
+			</div>
+		</div>
+{% endblock %}
