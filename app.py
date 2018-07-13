@@ -208,4 +208,8 @@ def worldGraph():
 	graph_data = worldmap_chart.render_data_uri()		
 	#return render_template("index.html", graph_data = graph_data)
 	return render_template("worldMap.html", graph_data = '<embed type="image/svg+xml" src= ' + graph_data + ' style=''max-width:1000px''/>')
+
+@app.route('/fullScreen/')
+def fullScreen():
+    return render_template('fullScreen.html')
 	

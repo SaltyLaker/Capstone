@@ -4,6 +4,10 @@ body {
   background-color: white;
 }
 
+.projectName{
+  font-size: 100px;
+}
+
 .topnav {
   overflow: hidden;
   background-color: #333;
