@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>
+		Main App
+	</title>
+	<link rel="stylesheet" type="text/css" href="CSS/main.css" />
+
+	<!--Bokeh-->
+	<script src="http://cdn.pydata.org/bokeh/release/bokeh-0.11.0.min.js"></script>
+    <link rel="stylesheet" href="http://cdn.pydata.org/bokeh/release/bokeh-0.11.0.min.css">
+    {{ script | safe }}
+
+</head>
+<body>
+	<div class="topnav">
+		<a href="#home">Home</a>
+		<a href="#home">Story</a>
+	</div>
+	<div class = "main">
+		<div class = "left">
+			<select class = "manual">
+			  <option value="USA">USA</option>
+			  <option value="India">India</option>
+			  <option value="UK">UK</option>
+			  <option value="Brazil">Brazil</option>
+			</select><br>
+			<select class = "manual">
+				<option value="Linear Regression">Linear Regression</option>
+			 	<option value="Decition Tree">Decition Tree</option>
+			</select><br>
+			Key Words: <input class = "manual" type='text' name='ticker' placeholder='Headache'/><br>
+			<input class = "manual" type="submit" value="Submit">
+		</div>
+		<div class = "right">
+			{{ div | safe }}
+		</div>
+	</div>
+</body>
+</html>
