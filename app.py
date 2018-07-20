@@ -184,8 +184,13 @@ def customGraphPost():
 	keyWords = stockName.split()
 	MLType = request.form.get('MLType')
 
+	if len(keyWords) > 5:
+		keyWords = keyWords[:5]
 
-	keyWords, timeStemp, keyWordData = outputData(keyWords, region, MLType)
+	try:
+		keyWords, timeStemp, keyWordData = outputData(keyWords, region, MLType)
+	except:
+		return render_template("Google is tired of answering questions!")
 
 	graph = pygal.Line()
 	graph.title = 'Google Trend Keyword Data - ' + region
