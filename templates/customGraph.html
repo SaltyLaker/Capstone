@@ -5,15 +5,15 @@
 				<form id='input' method='post' action="{{url_for('customGraphPost')}}">	
 					<p class = "text" >Key Words (seperated by space, no more than 5 words): </p>
 					<input class = "manual" type='text' name='keyWord' placeholder='Headache Flu Fever'/><br>
-					<select class = "manual" name="region" >
-					  <option value="US">USA</option>
-					  <option value="IN">India</option>
-					  <option value="GB">UK</option>
-					  <option value="BR">Brazil</option>
+					<select class = "manual" name="region">
+					  <option value="US" {{US|safe}}>USA</option>
+					  <option value="IN" {{IN|safe}}>India</option>
+					  <option value="GB" {{GB|safe}}>UK</option>
+					  <option value="BR" {{BR|safe}}>Brazil</option>
 					</select><br>
 					<select class = "manual" name = "MLType">
-						<option value="linearRegression" >Linear Regression</option>
-					 	<option value="KNeighborsRegressor">KNN</option>
+						<option value="linearRegression" {{LIN|safe}}>Linear Regression</option>
+					 	<option value="KNeighborsRegressor" {{KNN|safe}}>KNN</option>
 					</select><br>
 					<input class = "manual" type="submit" value="Submit">
 				</form>

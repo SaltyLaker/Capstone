@@ -42,7 +42,7 @@ def outputData(keyWords, region, trainingType):
 	
 	prediction = train(keywordsTrend, percentUSA, dateUSA, keyWords, trainingType)
 
-	if region == 'US':
+	if region == '': #Change for showing CDC data
 		outputkeyWords = ["CDC Data"] + ["Prediction"]+ keyWords
 		outputData = [truth] + [prediction] + keywordsTrend
 	else:
@@ -184,8 +184,34 @@ def customGraphPost():
 	keyWords = stockName.split()
 	MLType = request.form.get('MLType')
 
+	US = ''
+	IN = ''
+	GB = ''
+	BR = ''
+
+	if region == 'US':
+		US = 'selected'
+	elif region == 'IN':
+		IN = 'selected'
+	elif region == 'GB':
+		GB = 'selected'
+	elif region == 'BR':
+		BR = 'selected'
+
+	LIN = ''
+	KNN = ''
+
+	if MLType == 'linearRegression':
+		LIN = 'selected'
+	elif MLType == 'KNeighborsRegressor':
+		KNN = 'selected'
+
+	if len(keyWords) <= 0:
+		keyWords = ['Headache', 'Flu', 'Fever']
+
 	if len(keyWords) > 5:
 		keyWords = keyWords[:5]
+
 
 	try:
 		keyWords, timeStemp, keyWordData = outputData(keyWords, region, MLType)
@@ -199,7 +225,7 @@ def customGraphPost():
 		graph.add(keyWords[i],  keyWordData[i])
 	graph_data = graph.render_data_uri()
 	#return render_template("index.html", graph_data = graph_data)
-	return render_template("customGraph.html", graph_data = '<embed type="image/svg+xml" src= ' + graph_data + ' style=''max-width:1000px''/>')
+	return render_template("customGraph.html",US = US, IN = IN, GB = GB, BR = BR, LIN = LIN, KNN = KNN, graph_data = '<embed type="image/svg+xml" src= ' + graph_data + ' style=''max-width:1000px''/>')
 	#<embed type="image/svg+xml" src={{graph_data|safe}} style='max-width:1000px'/>
 
 @app.route('/worldGraph/')
